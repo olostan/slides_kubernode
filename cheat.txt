@@ -1,0 +1,146 @@
+Step1:
+------
+git clone https://github.com/ijason/NodeJS-Sample-App.git app
+mv app/EmployeeDB/ app/
+sed -i -- 's/localhost/mongo/g' ./app/app.js
+
+Step2:
+------
+FROM google/nodejs
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY ./app/ ./
+RUN npm install
+CMD ["node", "app.js"]
+
+Step3:
+------
+docker build -t myapp .
+docker run -p 3000:3000 myapp
+
+Step4:
+------
+gcloud auth login
+gcloud config set project olo-kube
+docker tag myapp gcr.io/olo-kube/myapp
+gcloud docker push gcr.io/olo-kube/myapp
+
+Step5:
+------
+gcloud components update kubectl
+gcloud beta container \
+  --project "olo-kube" \
+  clusters create "mean-cluster" \
+  --zone "europe-west1-b" \
+  --machine-type "n1-standard-1" \
+  --num-nodes "2" \
+  --network "default"
+
+Step6:
+------
+gcloud compute disks create \
+  --project "olo-kube" \
+  --zone "europe-west1-b" \
+  --size 200GB \
+  mongo-disk
+
+
+Step7:
+------
+db-controller.yml
+# db-controller.yml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: mongo
+  name: mongo-controller
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongo
+    spec:
+      containers:
+      - image: mongo
+        name: mongo
+        ports:
+        - name: mongo
+          containerPort: 27017
+          hostPort: 27017
+        volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-persistent-storage
+          gcePersistentDisk:
+            pdName: mongo-disk
+            fsType: ext4
+
+--------
+#db-service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mongo
+  name: mongo
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    name: mongo
+
+
+Step8:
+-----
+gcloud beta container clusters get-credentials --cluster mean-cluster --zone europe-west1-b --project olo-kube
+
+kubectl create -f db-controller.yml
+kubectl create -f db-service.yml
+kubectl get pods
+
+Step9:
+-----
+web-controller.yml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: web
+  name: web-controller
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+      - image: gcr.io/olo-kube/myapp
+        name: web
+        ports:
+        - containerPort: 3000
+          name: http-server
+
+web-service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  labels:
+    name: web
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    name: web
+
+Step10
+------
+gcloud compute forwarding-rules list --project olo-kube

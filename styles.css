@@ -1,0 +1,360 @@
+@import "https://fonts.googleapis.com/css?family=Roboto";
+html, body {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  perspective: 900px;
+  overflow: hidden;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+body {
+  transition: 1.2s all;
+}
+.sf {
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/hexegon_texture_hero-01.png");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: contain;
+}
+sample {
+  display: none;
+}
+.hidden {
+  opacity: 0;
+}
+controls {
+  font-size: 12px;
+  opacity: 0.3;
+}
+controls:hover {
+  opacity: 1;
+}
+symbol {
+  font-size: 120px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  opacity: 0;
+}
+comment {
+  background-color: #222;
+}
+#val {
+  line-height: 0;
+}
+#kubTitle {
+  font-size: 55px;
+  transform: translateY(190px);
+}
+#kub {
+  transform: translateY(60px);
+  font-size: 96px;
+}
+#kublogo {
+  transform: translateY(-180px);
+}
+body.s1 {
+  background-color: #fcf1d8;
+}
+.s1 {
+}
+.s1 #odessa {
+  opacity: 1;
+}
+body.s2 {
+  background-color: #0074C1;
+}
+.s2 {
+}
+.s2 #kublogo {
+  opacity: 1;
+  transform: translateY(-130px);
+}
+.s2 #kub {
+  opacity: 1;
+  transform: translateY(110px);
+  transition-delay: 0.4s;
+}
+.s2 #kubTitle {
+  opacity: 1;
+  transform: translateY(240px);
+  transition-delay: 0.6s;
+}
+.s2 #odessa {
+  opacity: 0;
+  transform: translateY(300px) rotateX(130deg);
+}
+#val {
+  transform: translateY(-270px) rotateX(-50deg) scaleX(0.5) scaleY(0.5);
+  box-shadow: 0 0 95px #000;
+}
+#val_qr {
+  transform: translateX(790px);
+}
+#val_qr {
+}
+#val_qr:after {
+  content: "http://olostan.name";
+  position: absolute;
+  font-size: 25px;
+  top: -35px;
+}
+#val_qr2 {
+}
+#val_qr2:after {
+  content: "https://goo.gl/nvOcCE";
+  position: absolute;
+  font-size: 25px;
+  top: -35px;
+  left: -30px;
+}
+#val_qr2 {
+  transform: translateX(-790px);
+}
+.s3 {
+}
+.s3 #kublogo {
+  transform: translateX(40px) translateY(170px) scaleX(0.35) scaleY(0.35);
+}
+.s3 #kub {
+  transform: translateY(160px);
+  transition-delay: 0s;
+}
+.s3 #kubTitle {
+  transform: translateY(280px);
+  transition-delay: 0s;
+}
+.s3 #odessa {
+  transform: translateY(600px) rotateX(260deg);
+}
+.s3 #val {
+  opacity: 1;
+  transform: translateY(-120px) rotateX(0deg) scaleX(0.5) scaleY(0.5);
+}
+.s3 #val_qr {
+  opacity: 1;
+  transform: translateX(290px);
+  transition-delay: 0.5s;
+}
+.s3 #val_qr2 {
+  opacity: 1;
+  transform: translateX(-290px);
+  transition-delay: 0.5s;
+}
+body.s4 {
+  background-color: #444;
+}
+#webapp {
+  transform: translateY(-300px);
+}
+#nodejs {
+  transform: translateY(-340px) scaleX(0.5) scaleY(0.5);
+}
+.s4 {
+}
+.s4 #kublogo {
+  opacity: 0;
+  transform: translateX(40px) translateY(768px) scaleX(0.35) scaleY(0.35);
+}
+.s4 #kub {
+  opacity: 0;
+  transform: translateY(610px);
+}
+.s4 #kubTitle {
+  opacity: 0;
+  transform: translateY(720px);
+}
+.s4 #odessa {
+  transform: translateY(1100px) rotateX(390deg);
+}
+.s4 #val {
+  opacity: 0;
+  transform: translateY(430px) rotateX(70deg) scaleX(0.5) scaleY(0.5);
+  transition-delay: 0.2s;
+}
+.s4 #val_qr {
+  opacity: 0;
+  transform: translateX(290px) translateY(500px) rotateX(70deg);
+}
+.s4 #val_qr2 {
+  opacity: 0;
+  transform: translateX(-290px) translateY(500px) rotateX(70deg);
+}
+.s4 #webapp {
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 0.7s;
+}
+.s4 #nodejs {
+  opacity: 1;
+  transform: translateY(-40px) scaleX(0.5) scaleY(0.5);
+  transition-delay: 0.9s;
+}
+#containers {
+  transform: rotateX(-90deg) scaleX(1.3) scaleY(1.3);
+}
+#docker {
+  transform: translateX(190px) translateY(-170px) scaleX(0.3) scaleY(0.3);
+}
+.s5 {
+}
+.s5 #webapp {
+  transform: translateY(0px) rotateX(90deg);
+  transition-delay: 0s;
+}
+.s5 #containers {
+  opacity: 1;
+  transform: rotateX(0deg) scaleX(1.3) scaleY(1.3);
+}
+.s5 #docker {
+  opacity: 1;
+}
+#manual {
+  transform: translateX(-200px) rotateX(0deg) rotateY(-90deg);
+}
+#manual_t {
+  transform: translateY(-400px);
+  font-size: 52px;
+  width: 600px;
+  text-align: center;
+  text-shadow: 0 0 15px #000;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+}
+.s6 {
+}
+.s6 #webapp {
+  opacity: 0;
+}
+.s6 #nodejs {
+  opacity: 0;
+}
+.s6 #containers {
+  opacity: 0;
+  transform: translateX(200px) rotateX(0deg) rotateY(90deg) scaleX(1.3) scaleY(1.3);
+}
+.s6 #docker {
+  opacity: 0;
+}
+.s6 #manual {
+  opacity: 1;
+  transform: translateX(0px) rotateX(0deg) rotateY(0deg);
+}
+.s6 #manual_t {
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 1s;
+}
+#kuber {
+  width: 900px;
+  height: 900px;
+  transform: translateY(-300px);
+}
+.s7 {
+}
+.s7 #manual {
+  opacity: 0;
+  transform: translateX(0px) translateY(400px) rotateX(120deg) rotateY(0deg);
+  transition-delay: 0.4s;
+}
+.s7 #manual_t {
+  opacity: 0;
+  transform: translateY(400px) rotateX(120deg);
+  transition-delay: 0s;
+}
+.s7 #kuber {
+  opacity: 1;
+  transform: translateY(300px);
+  transition-delay: 0.6s;
+}
+body.s7 {
+  background-color: #44e;
+}
+#containers2 {
+  transform: translateY(-400px) rotateX(50deg);
+}
+#containers2_t {
+  transform: translateY(-400px) rotateX(50deg);
+  text-shadow: 0 0 30px #000;
+}
+.s8 {
+}
+.s8 #kuber {
+  opacity: 0;
+  transform: translateY(900px);
+  transition-delay: 0s;
+}
+.s8 #containers2 {
+  opacity: 1;
+  transform: translateY(0px) rotateX(0deg);
+}
+.s8 #containers2_t {
+  opacity: 1;
+  transform: translateY(0px) rotateX(0deg);
+  transition-delay: 0.3s;
+}
+#pods {
+  transform: translateY(-400px) rotateX(50deg);
+}
+#pods_t {
+  transform: translateY(-400px) rotateX(50deg);
+  text-shadow: 0 0 30px #000;
+}
+.s9 {
+}
+.s9 #containers2 {
+  opacity: 0;
+  transform: translateY(400px) rotateX(-50deg);
+}
+.s9 #containers2_t {
+  opacity: 0;
+  transform: translateY(400px) rotateX(-50deg);
+}
+.s9 #pods {
+  opacity: 1;
+  transform: translateY(0px) rotateX(0deg);
+}
+.s9 #pods_t {
+  opacity: 1;
+  transform: translateY(0px) rotateX(0deg);
+  transition-delay: 0.3s;
+}
+#try {
+  transform: translateY(-400px) rotateX(50deg);
+}
+body.s7 {
+  background-color: #F00;
+}
+.s10 {
+}
+.s10 #pods {
+  opacity: 0;
+  transform: translateY(400px) rotateX(-50deg);
+}
+.s10 #pods_t {
+  opacity: 0;
+  transform: translateY(400px) rotateX(-50deg);
+}
+.s10 #try {
+  opacity: 1;
+  transform: translateY(0px) rotateX(0deg);
+}
+#cheat {
+  width: 800px;
+  height: 700px;
+  overflow: scroll;
+}
+#cheat pre {
+  font-size: 16px;
+}
+.s11 {
+}
+.s11 #cheat {
+  opacity: 1;
+}
